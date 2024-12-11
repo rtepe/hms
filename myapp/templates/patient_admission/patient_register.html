@@ -1,0 +1,10 @@
+<h1>Register New Patient</h1>
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="first_name" placeholder="First Name" required>
+    <input type="text" name="last_name" placeholder="Last Name" required>
+    <input type="date" name="dob" required>
+    <input type="text" name="contact_number" placeholder="Contact Number" required>
+    <textarea name="address" placeholder="Address" required></textarea>
+    <button type="submit">Register</button>
+</form>
