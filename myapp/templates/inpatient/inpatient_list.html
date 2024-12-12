@@ -5,3 +5,14 @@
         <li>{{ record.patient.first_name }} {{ record.patient.last_name }} - Room: {{ record.room.room_number }}</li>
     {% endfor %}
 </ul>
+
+<div class="form-container">
+    <h2>Inpatient Form</h2>
+    <form>
+        <div class="form-input">
+            <label for="patientId">Patient ID</label>
+            <input type="number" id="patientId" name="patientId" required>
+        </div>
+
+    </form>
+</div>
