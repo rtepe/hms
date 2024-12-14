@@ -1,3 +1,66 @@
+{% load crispy_forms_tags %}
+
+<html>
+<div class="form-container">
+    <h1>Inpatient Form</h2>
+    <form>
+        <div class="form-input">
+            <label for="patientId">Enter the Patient ID for the patient: </label>
+            <input type="text" id="patientId" name="patientId" placeholder="Patient ID" required>
+        </div>
+        <div class="form-input">
+            <label for="roomId">Enter the Room ID for the patient's room: </label>
+            <input type="text" id="roomId" name="roomId" placeholder="Room ID" required>
+        </div>
+
+        <div class="form-input">
+            <label for="staffId">Enter the Staff ID for the staff responsible of the patient: </label>
+            <input type="text" id="staffId" name="staffId" placeholder="Staff ID" required>
+        </div>
+
+        <div class="form-input">
+            <label for="admissionDate">Enter the patient's addmission date: </label>
+            <input type="date" id="admissionDate" name="admissionDate" required>
+        </div>
+
+        <div class="form-input">
+            <label for="dischargeDate">Enter the patient's discharge date:</label>
+            <input type="date" id="dischargeDate" name="dischargeDate" required>
+        </div>
+
+        <div class="form-input">
+            <label for="diagnosisInfo">Enter the information about patient's diagnosis: </label>
+            <textarea id="diagnosisInfo" name="diagnosisInfo" placeholder="Diagnosis Information" rows="3"></textarea>
+        </div>
+
+        <div class="form-input">
+            <label for="treatmentInfo">Enter the information about patient's treatment:</label>
+            <textarea id="treatmentInfo" name="treatmentInfo" placeholder="Treatment Information" rows="3"></textarea>
+        </div>
+
+        <div class="form-input">
+            <label for="conditionInfo"> Enter the information about patient's condition: </label>
+            <textarea id="conditionInfo" name="conditionInfo" placeholder="Condition Information" rows="1"></textarea>
+        </div>
+
+        <div class="form-input">
+            <label for="insuranceInfo">Enter the information about patient's insurance (insurance provider etc.): </label>
+            <textarea id="insuranceInfo" name="insuranceInfo" placeholder="Insurance Information" rows="1"></textarea>
+        </div>
+
+        <div class="form-input">
+            <label for="status">Enter the current status of the patient's monitoring process:</label>
+            <select id="status" name="status"  placeholder="Status" required>
+                <option value="admited">Admited</option>
+                <option value="hospitalized">Hospitalized</option>
+                <option value="discharged">Discharged</option>
+            </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+
 <h1>Inpatient List</h1>
 <a href="{% url 'admit_patient' %}">Admit New Patient</a>
 <ul>
@@ -6,13 +69,4 @@
     {% endfor %}
 </ul>
 
-<div class="form-container">
-    <h2>Inpatient Form</h2>
-    <form>
-        <div class="form-input">
-            <label for="patientId">Patient ID</label>
-            <input type="number" id="patientId" name="patientId" required>
-        </div>
-
-    </form>
-</div>
+</html>
