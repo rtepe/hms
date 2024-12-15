@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .patient-table th, .patient-table td {
+            vertical-align: middle;
+        }
+        .patient-table {
+            width: 100%;  /* Makes the table take up full available width */
+            margin-top: 20px;
+        }
+        .patient-table .admit-btn {
+            color: white;
+            background-color: #007bff;
+            border: none;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .patient-table .admit-btn:hover {
+            background-color: #0056b3;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+        }
+</style>
+
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="{% static 'myapp/images/logo.png' %}" style="width: 40px; height: auto; margin-right: 10px;">
+        Bil-Health</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="">Patients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="">Inpatients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="mt-5">Patient List</h1>
+    <a href="{% url 'patient_register' %}" class="btn btn-success mb-3">Register New Patient</a>
+    <div class="card">
+        <table class="table table-striped patient-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>TC Number</th>
+                    <th>Insurance Number</th>
+                    <th>Contact Number</th>
+                    <th>District</th>
+                    <th>City</th>
+                    <th>Admission Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for patient in patients %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ patient.first_name }}</td>
+                        <td>{{ patient.last_name }}</td>
+                        <td>Male</td>
+                        <!-- Mask TC Number -->
+                        <td>{{ patient.tc_number|slice:":2" }}32********</td> <!-- Showing first 2 digits and masking the rest -->
+                        <td>{{ patient.insurance_number|slice:":2" }}99********</td> <!-- Showing first 2 digits and masking the rest -->
+                        <td>{{ patient.contact_number }}</td>
+                        <td>Çankaya</td>
+                        <td>Ankara</td>
+                        <td>{{ patient.admission_date|date:"F j, Y" }}</td>
+                        <td>
+                            <a href="" class="admit-btn">Admit</a>
+                            <a href="" class="view-btn"><i class="fas fa-eye"></i>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
