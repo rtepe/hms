@@ -43,13 +43,9 @@ INSTALLED_APPS = [
     "myapp",
     'patient_admission',
     'inpatient',
-    "crispy_forms",
-    "crispy_bootstrap5",
 ]
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
-CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 
 MIDDLEWARE = [
@@ -90,7 +86,7 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'hwc',  # Replace with your database name
         'CLIENT': {
-            'host': os.getenv("MONGO_URI"),  # Replace with your MongoDB URI
+            'host': "mongodb+srv://rtepe:5OYAfjLzNnljcGQL@hwc.vgsuv.mongodb.net/?retryWrites=true&w=majority&appName=hwc&tls=true",  # Replace with your MongoDB URI
         }
     }
 }
@@ -146,5 +142,5 @@ MIGRATION_MODULES = {
 from mongoengine import connect
 connect(
     db="hwc",  # Replace with your database name
-    host=os.getenv("MONGO_URI"),  # Replace with your MongoDB host
+    host="mongodb+srv://rtepe:5OYAfjLzNnljcGQL@hwc.vgsuv.mongodb.net/?retryWrites=true&w=majority&appName=hwc&tls=true",  # Replace with your MongoDB host
 )

@@ -1,8 +1,14 @@
-{% load crispy_forms_tags %}
+{% extends "base.html" %}
 
 <html>
+    {% block content %}
+
 <div class="form-container">
+
     <h1>Inpatient Form</h2>
+
+
+
     <form>
         <div class="form-input">
             <label for="patientId">Enter the Patient ID for the patient: </label>
@@ -59,6 +65,7 @@
 
         <button type="submit" class="submit-btn">Submit</button>
     </form>
+
 </div>
 
 <h1>Inpatient List</h1>
@@ -68,5 +75,6 @@
         <li>{{ record.patient.first_name }} {{ record.patient.last_name }} - Room: {{ record.room.room_number }}</li>
     {% endfor %}
 </ul>
+{% endblock %}
 
 </html>

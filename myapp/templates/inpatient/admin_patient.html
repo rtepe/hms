@@ -1,6 +1,9 @@
+
+{% extends "base.html" %}
+{% block content %}
+
 <h1>Admit New Patient</h1>
 <form method="POST">
-    {% csrf_token %}
     <select name="patient" required>
         {% for patient in patients %}
             <option value="{{ patient.id }}">{{ patient.first_name }} {{ patient.last_name }}</option>
@@ -13,3 +16,4 @@
     </select>
     <button type="submit">Admit</button>
 </form>
+{% end content %}
